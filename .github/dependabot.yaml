@@ -1,0 +1,48 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+
+registries:
+  dockerhub: # Define access for a private registry
+    type: docker-registry
+    url: registry.hub.docker.com
+    username: ${{secrets.DOCKERHUB_USERNAME}}
+    password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+updates:
+  # Maintain dependencies for npm
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - "AstralJaeger"
+    commit-message:
+      prefix: "go"
+    open-pull-requests-limit: 5
+    versioning-strategy: increase-if-necessary
+
+  # Maintain dependencies for github actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - "AstralJaeger"
+    commit-message:
+      prefix: "actions"
+    open-pull-requests-limit: 5
+
+  # Maintain dependencies for docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    assignees:
+      - "AstralJaeger"
+    commit-message:
+      prefix: "docker"
+    open-pull-requests-limit: 5
