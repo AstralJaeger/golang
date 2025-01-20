@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ['1.22.x', 'latest']
+        go-version: ['1.23.x']
         go-os: ['linux']
         go-arch: ['amd64', 'arm', 'arm64']
     steps:
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ['1.22.x', 'latest']
+        go-version: ['1.23.x']
         go-os: ['linux']
     permissions:
       contents: read
