@@ -9,7 +9,7 @@
 ################################################################################
 # Create a stage for building the application.
 ARG USE_CGO=0
-ARG GO_VERSION=1.22
+ARG GO_VERSION=1.23.5-alpine
 FROM --platform=$BUILDPLATFORM golang:${GO_VERSION} AS build
 WORKDIR /src
 
@@ -46,7 +46,7 @@ RUN --mount=type=cache,target=/go/pkg/mod/ \
 # most recent version of that image when you build your Dockerfile. If
 # reproducability is important, consider using a versioned tag
 # (e.g., alpine:3.17.2) or SHA (e.g., alpine@sha256:c41ab5c992deb4fe7e5da09f67a8804a46bd0592bfdf0b1847dde0e0889d2bff).
-FROM alpine:3.19.1 AS final
+FROM alpine:3.21.2 AS final
 
 # Install any runtime dependencies that are needed to run your application.
 # Leverage a cache mount to /var/cache/apk/ to speed up subsequent builds.
